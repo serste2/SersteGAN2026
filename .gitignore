@@ -14,6 +14,7 @@ venv/
 
 # Data, models, and generated artifacts
 data/
+manifests/*.jsonl
 originals/
 derived/
 indexes/
@@ -32,3 +33,5 @@ reports/*.png
 reports/*.jpg
 reports/*.jpeg
 reports/*.webp
+reports/*.json
+reports/*.html
