@@ -1,0 +1,6 @@
+Metadata-Version: 2.4
+Name: visual-dialogue-corpus
+Version: 0.1.0
+Summary: Corpus and validation tooling for visual dialogue research
+Requires-Python: >=3.11
+Requires-Dist: Pillow>=10.0

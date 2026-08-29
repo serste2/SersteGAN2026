@@ -7,6 +7,7 @@ name = "visual-dialogue-corpus"
 version = "0.1.0"
 description = "Corpus and validation tooling for visual dialogue research"
 requires-python = ">=3.11"
+dependencies = ["Pillow>=10.0"]
 
 [tool.setuptools]
 package-dir = {"" = "src"}

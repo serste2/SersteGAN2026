@@ -8,6 +8,10 @@ Created a code-only repository. No corpus acquisition, model training, or Unity 
 
 The user directed that all project work use `Z:`. The data root is therefore `Z:\\visual-dialogue-gan\\data`, protected by `.gitignore`.
 
+## 2026-08-29 — NAS storage root
+
+Serena superseded the earlier local-data decision for large corpus storage. Images, shards, embeddings, indexes, checkpoints, and logs now use `J:\\Sere\\visual-dialogue-corpus`. Code and lightweight manifests remain on `Z:` and GitHub. Existing pilot data on `Z:` is preserved until a separately verified migration.
+
 ## 2026-08-29 — DADA activity numbering
 
 Public `/pa/<number>` routes use a global activity ID. Consecutive IDs may be separate conversation roots. Opening a reply ID renders the suffix of its existing chain. The crawler therefore scans upward, records the rendered chain, and skips activity IDs already covered by an earlier root page.

@@ -1,7 +1,7 @@
 # Copy this file to local.toml. Do not commit local.toml.
 [paths]
 work_root = "Z:\\visual-dialogue-gan"
-data_root = "Z:\\visual-dialogue-gan\\data"
+data_root = "J:\\Sere\\visual-dialogue-corpus"
 
 [collection]
 artist_death_year_cutoff = 1955
