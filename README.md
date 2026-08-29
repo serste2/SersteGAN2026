@@ -2,6 +2,18 @@
 
 Code-only foundation for a system that generates a new drawing as a meaningful visual response to a prompt drawing.
 
+## Draw now
+
+The local Visual Dialogue prototype is available today. Run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/start_visual_dialogue.ps1
+```
+
+It opens a drawing canvas at `http://127.0.0.1:4173`. Draw a gesture, select a dialogue relation, generate a response, continue to a second turn, and download the result.
+
+The current engine is an honestly labelled procedural generator, not a trained GAN checkpoint. It proves the interaction and dialogue protocol while corpus collection and model work continue.
+
 ## Status
 
 Milestone 0 scaffold. No artworks, dialogue material, embeddings, checkpoints, or downloaded images are stored in this repository.
