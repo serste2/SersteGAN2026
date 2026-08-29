@@ -1,0 +1,34 @@
+# Machine-specific configuration and secrets
+config/local.toml
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# Data, models, and generated artifacts
+data/
+originals/
+derived/
+indexes/
+checkpoints/
+logs/
+*.part
+*.sqlite
+*.db
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+
+# Keep lightweight project reports only
+reports/*.png
+reports/*.jpg
+reports/*.jpeg
+reports/*.webp
