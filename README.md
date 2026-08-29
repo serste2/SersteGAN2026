@@ -37,6 +37,10 @@ python -m visual_dialogue_corpus.cli dada-crawl --start 1 --end 1000 --delay 0.7
 
 DADA records are marked `training_eligible=false` until rights for model training are confirmed.
 
+The DADA number is a global activity ID. Opening a reply ID renders the remaining suffix
+of that chain, so the range crawler records all rendered turns and skips covered IDs when
+it later reaches them.
+
 ## Data policy
 
 Canonical manifests live in `manifests/`. Originals, derived data, indexes, checkpoints, and logs live under the local `data/` root and are excluded from Git.

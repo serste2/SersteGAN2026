@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import json
 import re
+import time
 from datetime import UTC, datetime
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
@@ -12,10 +14,20 @@ BASE = "https://collectionapi.metmuseum.org/public/collection/v1"
 ALLOWED_MEDIUM = ("painting", "watercolor", "gouache", "pastel", "fresco", "manuscript", "drawing")
 
 
-def _get(url: str) -> dict:
+def _get(url: str, retries: int = 3) -> dict:
     request = Request(url, headers={"User-Agent": "visual-dialogue-corpus/0.1"})
-    with urlopen(request, timeout=30) as response:
-        return json.load(response)
+    for attempt in range(retries):
+        try:
+            with urlopen(request, timeout=30) as response:
+                return json.load(response)
+        except HTTPError as error:
+            if error.code == 404 or attempt == retries - 1:
+                raise
+        except (URLError, TimeoutError, OSError):
+            if attempt == retries - 1:
+                raise
+        time.sleep(2 ** attempt)
+    raise RuntimeError("unreachable")
 
 
 def _death_year(value: str) -> int | None:
@@ -52,7 +64,12 @@ def collect(query: str, limit: int) -> list[dict]:
     search = _get(f"{BASE}/search?" + urlencode({"hasImages": "true", "q": query}))
     records: list[dict] = []
     for object_id in search.get("objectIDs") or []:
-        candidate = _record(_get(f"{BASE}/objects/{object_id}"))
+        try:
+            candidate = _record(_get(f"{BASE}/objects/{object_id}"))
+        except HTTPError as error:
+            if error.code == 404:
+                continue
+            raise
         if candidate:
             records.append(candidate)
         if len(records) >= limit:
