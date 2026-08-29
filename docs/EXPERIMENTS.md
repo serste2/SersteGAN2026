@@ -19,6 +19,8 @@
 
 ### Border continuity check
 
+- Desktop canvas gap: exactly `0` CSS pixels; the decorative arrow and central spacer were removed.
+- Response background policy: deterministic inheritance from the prompt's dominant corner color.
 - Prompt stroke reached the right border at canvas y=302.
 - Echo response began at the left border at the same y=302.
 - Boundary pixel matched exactly on both canvases: RGBA `[22, 18, 15, 255]`.

@@ -15,3 +15,5 @@ Public `/pa/<number>` routes use a global activity ID. Consecutive IDs may be se
 ## 2026-08-29 — Same-day drawable prototype
 
 The first interactive release uses a local procedural response engine behind a model-agnostic canvas workflow. It is labelled as a prototype and must not be described as a trained GAN. A future pretrained or project-trained image model will replace the response adapter without changing the core draw → response → next-turn interaction.
+
+Canvas backgrounds are not generative choices. The response inherits the prompt's dominant corner color deterministically. On desktop, prompt and response canvases share one physical boundary with no arrow, spacer, padding, or double border at the seam.
