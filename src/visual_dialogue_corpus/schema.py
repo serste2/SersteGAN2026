@@ -15,13 +15,15 @@ def validate(record: dict[str, Any], cutoff: int = 1955) -> list[str]:
     corpus = record.get("corpus")
     if corpus not in {"historical_vision", "visual_dialogue"}:
         errors.append("invalid:corpus")
-    if record.get("rights") not in RIGHTS:
-        errors.append("invalid:rights")
     if corpus == "historical_vision":
+        if record.get("rights") not in RIGHTS:
+            errors.append("invalid:rights")
         errors += [f"missing:{key}" for key in sorted(HISTORICAL - record.keys())]
         if not record.get("anonymous") and (not isinstance(record.get("artist_death_year"), int) or record["artist_death_year"] > cutoff):
             errors.append("invalid:artist_death_year")
     if corpus == "visual_dialogue":
+        if not record.get("rights"):
+            errors.append("missing:rights")
         for field in ("conversation_id", "position", "parent_id", "author_id", "relation", "is_museum_prompt", "is_sitm"):
             if field not in record:
                 errors.append(f"missing:{field}")
